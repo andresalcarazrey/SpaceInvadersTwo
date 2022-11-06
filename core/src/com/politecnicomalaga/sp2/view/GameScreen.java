@@ -45,24 +45,22 @@ public class GameScreen implements Screen {
 
             public void clicked(InputEvent event, float x, float y, int pointer, int button) {
 
-
-
             }
 
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                //Nos han tocado, estamos en movimiento
-                heroShip.setX(x);
+
                 return true;
             }
 
+
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                //Nos sueltan, ya no hacemos caso
+
             }
 
             @Override
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                heroShip.setX(x);
-                heroShip.setY(y);
+                //We set X to the position of the "point" touched, so, the spaceship follows us
+                heroShip.setX(event.getStageX());
             }
         });
         stage.addActor(heroShip);
