@@ -1,0 +1,153 @@
+
+sp2.png
+size: 2048, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+enemy
+  rotate: false
+  xy: 2, 29
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 4
+enemy
+  rotate: false
+  xy: 224, 29
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 1
+enemy
+  rotate: false
+  xy: 446, 29
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 6
+enemy
+  rotate: false
+  xy: 668, 29
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 3
+enemy
+  rotate: false
+  xy: 890, 29
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 5
+enemy
+  rotate: false
+  xy: 1112, 29
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 2
+explosion
+  rotate: false
+  xy: 1458, 209
+  size: 44, 40
+  orig: 44, 40
+  offset: 0, 0
+  index: 4
+explosion
+  rotate: false
+  xy: 1396, 88
+  size: 35, 39
+  orig: 44, 40
+  offset: 4, 1
+  index: 3
+explosion
+  rotate: false
+  xy: 1396, 88
+  size: 35, 39
+  orig: 44, 40
+  offset: 4, 1
+  index: 5
+explosion
+  rotate: false
+  xy: 2, 2
+  size: 28, 25
+  orig: 44, 40
+  offset: 7, 8
+  index: 2
+explosion
+  rotate: false
+  xy: 2, 2
+  size: 28, 25
+  orig: 44, 40
+  offset: 7, 8
+  index: 6
+explosion
+  rotate: false
+  xy: 1334, 53
+  size: 15, 13
+  orig: 44, 40
+  offset: 13, 14
+  index: 7
+explosion
+  rotate: false
+  xy: 1334, 53
+  size: 15, 13
+  orig: 44, 40
+  offset: 13, 14
+  index: 1
+player
+  rotate: false
+  xy: 1334, 190
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 5
+player
+  rotate: false
+  xy: 1334, 129
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 2
+player
+  rotate: false
+  xy: 1334, 129
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 8
+player
+  rotate: false
+  xy: 1396, 190
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 7
+player
+  rotate: false
+  xy: 1396, 190
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 3
+player
+  rotate: false
+  xy: 1334, 68
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 4
+player
+  rotate: false
+  xy: 1334, 68
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 6
+player
+  rotate: false
+  xy: 1396, 129
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 1
