@@ -23,4 +23,12 @@ public class Battalion {
             Squadron newSquad = new Squadron(baseStage, (short)(posY - i*offsetY));
         }
     }
+
+
+    //Memory dispose
+    public void dispose() {
+        for (Squadron sq: squadrons) {
+            sq.dispose();
+        }
+    }
 }

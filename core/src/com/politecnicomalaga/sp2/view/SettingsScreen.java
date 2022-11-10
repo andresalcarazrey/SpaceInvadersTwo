@@ -17,16 +17,16 @@ import com.politecnicomalaga.sp2.managers.ScreensManager;
 import com.politecnicomalaga.sp2.managers.LanguageManager;
 
 /**
- * SplashScreen Class. It is showed when the game ends
+ * SettingsScreen Class. Now, only for languages
  * Created by Andrés Alcaraz Rey on 10/11/2022.
  *
  */
-public class SplashScreen implements Screen {
+public class SettingsScreen implements Screen {
 
     private Stage stage;
     private Game game;
 
-    public SplashScreen(final Game aGame) {
+    public SettingsScreen(final Game aGame) {
         game = aGame;
 
 
@@ -35,27 +35,28 @@ public class SplashScreen implements Screen {
         //Esta orden se puede poner también en el show()
         Gdx.input.setInputProcessor(stage);
 
-        Label title = new Label(LanguageManager.getSingleton().getString(LanguageManager.SPLASH_LABEL), AssetsManager.getTextSkin(),"big-black");
+        Label title = new Label(LanguageManager.getSingleton().getString(LanguageManager.SETTINGS_LABEL), AssetsManager.getTextSkin(),"big-black");
         title.setAlignment(Align.center);
-        title.setY(Gdx.graphics.getHeight()-title.getHeight()*2);
+        title.setY(Gdx.graphics.getHeight()*2/3);
         title.setWidth(Gdx.graphics.getWidth());
 
         //Añadimos la etiqueta a la pantalla.
         stage.addActor(title);
 
         //Ahora le toca a los botones. Son botones con texto
-        TextButton playButton = new TextButton(LanguageManager.getSingleton().getString(LanguageManager.START_BUTTON), AssetsManager.getTextSkin());
-        playButton.setWidth(Gdx.graphics.getWidth()/2);
-        playButton.setPosition(Gdx.graphics.getWidth()/2-playButton.getWidth()/2,Gdx.graphics.getHeight()-playButton.getHeight()*4);
+        TextButton spanishButton = new TextButton(LanguageManager.getSingleton().getString(LanguageManager.SPANISH_BUTTON), AssetsManager.getTextSkin());
+        spanishButton.setWidth(Gdx.graphics.getWidth()/2);
+        spanishButton.setPosition(Gdx.graphics.getWidth()/2-spanishButton.getWidth()/2,Gdx.graphics.getHeight()/2-spanishButton.getHeight()/2);
 
         //Le añadimos al botón una acción con un listener. MVC
-        playButton.addListener(new InputListener(){
+        spanishButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 //Cuando el botón se suelte...
                 //Le decimos al juego que coja y asigne una screen nueva, en concreto
                 //una GameScreen
-                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAME_SCREEN));
+                LanguageManager.getSingleton().setActiveLanguage(LanguageManager.Lang.SPANISH);
+                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SPLASH_SCREEN));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -64,21 +65,22 @@ public class SplashScreen implements Screen {
             }
         });
         //El botón también es un actor.
-        stage.addActor(playButton);
+        stage.addActor(spanishButton);
 
         //Ahora le toca a los botones. Son botones con texto
-        TextButton settingsButton = new TextButton(LanguageManager.getSingleton().getString(LanguageManager.SETTINGS_BUTTON), AssetsManager.getTextSkin());
-        settingsButton.setWidth(Gdx.graphics.getWidth()/2);
-        settingsButton.setPosition(Gdx.graphics.getWidth()/2-settingsButton.getWidth()/2,Gdx.graphics.getHeight()-settingsButton.getHeight()*6);
+        TextButton englishButton = new TextButton(LanguageManager.getSingleton().getString(LanguageManager.ENGLISH_BUTTON), AssetsManager.getTextSkin());
+        englishButton.setWidth(Gdx.graphics.getWidth()/2);
+        englishButton.setPosition(Gdx.graphics.getWidth()/2-englishButton.getWidth()/2,Gdx.graphics.getHeight()/2-englishButton.getHeight()*2);
 
         //Le añadimos al botón una acción con un listener. MVC
-        settingsButton.addListener(new InputListener(){
+        englishButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 //Cuando el botón se suelte...
                 //Le decimos al juego que coja y asigne una screen nueva, en concreto
                 //una GameScreen
-                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SETTINGS_SCREEN));
+                LanguageManager.getSingleton().setActiveLanguage(LanguageManager.Lang.ENGLISH);
+                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SPLASH_SCREEN));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -87,7 +89,7 @@ public class SplashScreen implements Screen {
             }
         });
         //El botón también es un actor.
-        stage.addActor(settingsButton);
+        stage.addActor(englishButton);
 
 
     }

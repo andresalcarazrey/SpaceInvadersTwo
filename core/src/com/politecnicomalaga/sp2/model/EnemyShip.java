@@ -15,12 +15,12 @@ import java.util.Set;
 public class EnemyShip extends Actor {
 
     private Animation<TextureRegion> skin;
+    private TextureAtlas atlas;
 
     public EnemyShip() {
         super();
-        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
+        atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
         skin = new Animation<TextureRegion>(SettingsManager.ENEMY_ANIMATION_VEL, atlas.findRegions(AssetsManager.ENEMY_SPRITES_REGION), Animation.PlayMode.LOOP);
-        //atlas.dispose();
     }
     @Override
     public void draw(Batch batch, float parentAlpha) {
@@ -29,4 +29,8 @@ public class EnemyShip extends Actor {
         batch.draw(currentFrame, this.getX(), this.getY(), SettingsManager.ENEMIES_SIZE, SettingsManager.ENEMIES_SIZE);
     }
 
+
+    public void dispose() {
+        if (atlas != null) atlas.dispose();
+    }
 }

@@ -13,7 +13,8 @@ public class ScreensManager {
         GAME_SCREEN,
         SPLASH_SCREEN,
         CREDITS_SCREEN,
-        GAMEOVER_SCREEN
+        GAMEOVER_SCREEN,
+        SETTINGS_SCREEN
     }
 
     private ScreensManager() {
@@ -37,6 +38,8 @@ public class ScreensManager {
             case SPLASH_SCREEN: newScreen = new SplashScreen(aGame);
                 break;
             case CREDITS_SCREEN: newScreen = new CreditsScreen(aGame);
+                break;
+            case SETTINGS_SCREEN: newScreen = new SettingsScreen(aGame);
                 break;
             default: newScreen = new SplashScreen(aGame);
         }

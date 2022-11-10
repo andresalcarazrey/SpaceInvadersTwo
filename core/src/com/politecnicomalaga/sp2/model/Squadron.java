@@ -27,4 +27,11 @@ public class Squadron {
             baseStage.addActor(newEnemy);
         }
     }
+
+    //Memory dispose
+    public void dispose() {
+        for (EnemyShip ship: troops) {
+            ship.dispose();
+        }
+    }
 }
