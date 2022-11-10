@@ -9,22 +9,21 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.politecnicomalaga.sp2.managers.ScreensManager;
 import com.politecnicomalaga.sp2.model.Battalion;
 import com.politecnicomalaga.sp2.model.PlayerSpaceShip;
 
 /**
- * GameScreen Class. Where we play the game and we have the main battle
- * Created by Andrés Alcaraz Rey on 5/11/2022.
+ * GameOverScreen Class. It is showed when the game ends
+ * Created by Andrés Alcaraz Rey on 10/11/2022.
  *
  */
-public class GameScreen implements Screen {
+public class GameOverScreen implements Screen {
 
     private Stage stage;
     private Game game;
-    private Battalion empire;
-    private PlayerSpaceShip heroShip;
 
-    public GameScreen(Game aGame) {
+    public GameOverScreen(Game aGame) {
         game = aGame;
 
 
@@ -34,12 +33,9 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
 
-        //We add the battalion, "the empire"
-
-        empire = new Battalion(stage);
 
         //We add the main player
-        heroShip = new PlayerSpaceShip();
+        /*heroShip = new PlayerSpaceShip();
 
         heroShip.addListener(new InputListener() {
 
@@ -64,13 +60,13 @@ public class GameScreen implements Screen {
             }
         });
         stage.addActor(heroShip);
-        heroShip.setTouchable(Touchable.enabled);
+        heroShip.setTouchable(Touchable.enabled);*/
 
     }
 
     @Override
     public void show() {
-        Gdx.app.log("GameScreen","show");
+        Gdx.app.log("GameOverScreen","show");
 
     }
 
@@ -82,8 +78,6 @@ public class GameScreen implements Screen {
         stage.act();
         stage.draw();
     }
-
-
 
 
     @Override

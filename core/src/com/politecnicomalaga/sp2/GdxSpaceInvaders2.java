@@ -14,7 +14,6 @@ import com.politecnicomalaga.sp2.managers.SettingsManager;
 public class GdxSpaceInvaders2 extends Game {
 	SpriteBatch batch;
     OrthographicCamera camera;
-	Screen activeScreen;
 
 	
 	@Override
@@ -23,17 +22,18 @@ public class GdxSpaceInvaders2 extends Game {
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
-		activeScreen = ScreensManager.getSingleton().getScreen(this);
+		this.setScreen(ScreensManager.getSingleton().getScreen(this, ScreensManager.SCREENS.SPLASH_SCREEN));
 
-		activeScreen.show();
+		this.getScreen().show();
 	}
 
 	@Override
 	public void render () {
 		ScreenUtils.clear(0, 0, 0, 1);
-		batch.begin();
-		activeScreen.render(Gdx.graphics.getDeltaTime());
-		batch.end();
+		/*batch.begin();
+		this.getScreen().render(Gdx.graphics.getDeltaTime());
+		batch.end();*/
+		super.render();
 	}
 	
 	@Override

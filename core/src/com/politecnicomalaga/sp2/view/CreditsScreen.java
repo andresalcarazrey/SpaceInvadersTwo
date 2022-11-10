@@ -13,18 +13,17 @@ import com.politecnicomalaga.sp2.model.Battalion;
 import com.politecnicomalaga.sp2.model.PlayerSpaceShip;
 
 /**
- * GameScreen Class. Where we play the game and we have the main battle
- * Created by Andrés Alcaraz Rey on 5/11/2022.
+ * CreditsScreen Class. It shows data about the programmers and collaborators
+ * Created by Andrés Alcaraz Rey on 10/11/2022.
  *
  */
-public class GameScreen implements Screen {
+public class CreditsScreen implements Screen {
 
     private Stage stage;
     private Game game;
-    private Battalion empire;
-    private PlayerSpaceShip heroShip;
 
-    public GameScreen(Game aGame) {
+
+    public CreditsScreen(Game aGame) {
         game = aGame;
 
 
@@ -34,10 +33,7 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
 
-        //We add the battalion, "the empire"
-
-        empire = new Battalion(stage);
-
+    /*
         //We add the main player
         heroShip = new PlayerSpaceShip();
 
@@ -65,12 +61,12 @@ public class GameScreen implements Screen {
         });
         stage.addActor(heroShip);
         heroShip.setTouchable(Touchable.enabled);
-
+*/
     }
 
     @Override
     public void show() {
-        Gdx.app.log("GameScreen","show");
+        Gdx.app.log("CreditsScreen","show");
 
     }
 

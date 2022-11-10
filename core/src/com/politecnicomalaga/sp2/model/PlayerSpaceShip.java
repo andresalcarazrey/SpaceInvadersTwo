@@ -21,6 +21,7 @@ public class PlayerSpaceShip extends Actor {
         this.setBounds(0,0,SettingsManager.PLAYER_SIZE,SettingsManager.PLAYER_SIZE);
         this.setX(SettingsManager.SCREEN_WIDTH/2 - SettingsManager.MIDPLAYER_SIZE);
         this.setY(SettingsManager.MIDPLAYER_SIZE);
+        //atlas.dispose();
 
 
     }
