@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.Array;
 import com.politecnicomalaga.sp2.managers.AssetsManager;
 import com.politecnicomalaga.sp2.managers.GameManager;
 import com.politecnicomalaga.sp2.managers.SettingsManager;
@@ -15,8 +16,11 @@ public class PlayerSpaceShip extends Actor {
     private Animation<TextureRegion> skin;
     private TextureAtlas atlas;
 
+    private Array<HeroBullet> myActiveBullets;
+
     public PlayerSpaceShip() {
         super();
+        myActiveBullets = new Array<HeroBullet>();
         atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
         skin = new Animation<TextureRegion>(SettingsManager.PLAYER_ANIMATION_VEL, atlas.findRegions(AssetsManager.PLAYER_SPRITES_REGION), Animation.PlayMode.LOOP);
         this.setBounds(0,0,SettingsManager.PLAYER_SIZE,SettingsManager.PLAYER_SIZE);
@@ -34,5 +38,9 @@ public class PlayerSpaceShip extends Actor {
     //Memory dispose
     public void dispose() {
         if (atlas != null) atlas.dispose();
+    }
+
+    public void fireBullet() {
+        myActiveBullets.add(new HeroBullet(this));
     }
 }
