@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.politecnicomalaga.sp2.managers.AssetsManager;
 import com.politecnicomalaga.sp2.managers.GameManager;
+import com.politecnicomalaga.sp2.managers.ScreensManager;
 import com.politecnicomalaga.sp2.managers.SettingsManager;
 
 public class HeroBullet extends Actor {
@@ -22,7 +23,7 @@ public class HeroBullet extends Actor {
 
         //Dims and position
         setBounds(0,0,SettingsManager.HEROBULLET_SIZE,SettingsManager.HEROBULLET_SIZE);
-        setX(myOwner.getX());
+        setX(myOwner.getX()+SettingsManager.MIDPLAYER_SIZE-SettingsManager.MIDHEROBULLET_SIZE);
         setY(myOwner.getY());
         velY = SettingsManager.HEROBULLET_VELY;
 
@@ -41,9 +42,17 @@ public class HeroBullet extends Actor {
         super.act(delta);
         setY(getY()+velY);
 
+        //Now we have to search for collisions....
+        //For efficiency, we use squadron Y to avoid extra calculations
+        //We give this object to Battalion, it search for the squadron with the more or less same Y
+        //and then the enemy with more or less X.
+
+        todo
+
     }
 
     public void dispose() {
         if (atlas != null) atlas.dispose();
     }
+
 }

@@ -9,6 +9,7 @@ public class AssetsManager {
     public static final String NUMBERS_EXT_SPRITES =".png";
     public static final String ENEMY_SPRITES_REGION ="enemy";
     public static final String HEROBULLET_SPRITES_REGION ="herobullets";
+    public static final String ENEMYBULLET_SPRITES_REGION ="enemybullets";
     public static final String ATLAS_FILE ="sp2.atlas";
     public static final String PLAYER_SPRITES_REGION ="player";
     private static Skin textSkin;
