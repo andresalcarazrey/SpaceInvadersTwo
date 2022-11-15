@@ -1,6 +1,7 @@
 package com.politecnicomalaga.sp2.managers;
 
 import com.badlogic.gdx.Gdx;
+import com.politecnicomalaga.sp2.GdxSpaceInvaders2;
 
 public class GameManager {
 
@@ -15,7 +16,6 @@ public class GameManager {
     }
 
     public float getGameTime() {
-        gameTime += Gdx.graphics.getDeltaTime();
-        return gameTime;
+        return GdxSpaceInvaders2.getGameTime();
     }
 }

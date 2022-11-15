@@ -47,7 +47,7 @@ public class HeroBullet extends Actor {
         //We give this object to Battalion, it search for the squadron with the more or less same Y
         //and then the enemy with more or less X.
 
-        todo
+
 
     }
 

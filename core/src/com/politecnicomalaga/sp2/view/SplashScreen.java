@@ -29,7 +29,6 @@ public class SplashScreen implements Screen {
     public SplashScreen(final Game aGame) {
         game = aGame;
 
-
         stage = new Stage(new ScreenViewport());
 
         //Esta orden se puede poner también en el show()
