@@ -9,6 +9,8 @@ public class ScreensManager {
 
     private static ScreensManager singleton;
 
+    private Screen activeScreen;
+
     public static enum SCREENS {
         GAME_SCREEN,
         SPLASH_SCREEN,
@@ -43,7 +45,12 @@ public class ScreensManager {
                 break;
             default: newScreen = new SplashScreen(aGame);
         }
+        activeScreen = newScreen;
         return newScreen;
+    }
+
+    public Screen getActiveScreen() {
+        return activeScreen;
     }
 
 }

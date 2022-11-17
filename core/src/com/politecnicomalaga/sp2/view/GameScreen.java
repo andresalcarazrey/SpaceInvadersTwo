@@ -114,5 +114,8 @@ public class GameScreen implements Screen {
         heroShip.dispose();
     }
 
+    public Battalion getBattalion() {
+        return empire;
+    }
 
 }

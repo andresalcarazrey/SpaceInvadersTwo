@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.politecnicomalaga.sp2.managers.AssetsManager;
@@ -70,6 +71,16 @@ public class PlayerSpaceShip extends Actor {
         for (HeroBullet b: myActiveBullets) {
             b.act(delta);
         }
+
+        for (int i = 0; i<myActiveBullets.size;i++) {
+            HeroBullet b = (myActiveBullets.get(i));
+            if (!b.isEnabled()) {
+                b.setEnabled();
+                myActiveBullets.removeIndex(i);
+                myUsedBullets.add(b);
+                i--;
+            }
+        }
     }
 
 
@@ -107,5 +118,9 @@ public class PlayerSpaceShip extends Actor {
     private void prepareForReuse(HeroBullet usedBullet) {
         myActiveBullets.removeIndex(0);
         myUsedBullets.add(usedBullet);
+    }
+
+    public void removeBullet(HeroBullet bulletToRemove) {
+        bulletToRemove.setDisabled();
     }
 }

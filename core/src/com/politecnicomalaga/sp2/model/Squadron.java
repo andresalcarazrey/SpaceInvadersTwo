@@ -34,4 +34,18 @@ public class Squadron {
             ship.dispose();
         }
     }
+
+
+    //Collisions between a bullet and my soldiers
+    public boolean calculateCollisions(HeroBullet heroBullet) {
+        boolean bResult = false;
+        int indexTroops = 0;
+
+        while (!bResult && indexTroops < this.troops.size) {
+            bResult = troops.get(indexTroops).calculateCollisions(heroBullet);
+            indexTroops++;
+        }
+
+        return bResult;
+    }
 }

@@ -10,16 +10,19 @@ import com.politecnicomalaga.sp2.managers.AssetsManager;
 import com.politecnicomalaga.sp2.managers.GameManager;
 import com.politecnicomalaga.sp2.managers.ScreensManager;
 import com.politecnicomalaga.sp2.managers.SettingsManager;
+import com.politecnicomalaga.sp2.view.GameScreen;
 
 public class HeroBullet extends Actor {
     private Animation<TextureRegion> skin;
     private TextureAtlas atlas;
     private PlayerSpaceShip myOwner;
     private float velY;
+    boolean bEnabled;
 
     public HeroBullet(PlayerSpaceShip myOwner) {
         super();
         this.myOwner = myOwner;
+        bEnabled = true;
 
         //Dims and position
         setBounds(0,0,SettingsManager.HEROBULLET_SIZE,SettingsManager.HEROBULLET_SIZE);
@@ -47,8 +50,28 @@ public class HeroBullet extends Actor {
         //We give this object to Battalion, it search for the squadron with the more or less same Y
         //and then the enemy with more or less X.
 
+        GameScreen myScreen = (GameScreen)ScreensManager.getSingleton().getActiveScreen();
+        if (myScreen.getBattalion().calculateCollisions(this)) {
+            //we touch an enemy. The enemy is dead. We have to remove this bullet
+            myOwner.removeBullet(this);
+            this.dispose();
+
+        }
 
 
+
+    }
+
+    public boolean isEnabled() {
+        return bEnabled;
+    }
+
+    public void setEnabled(){
+        bEnabled = true;
+    }
+
+    public void setDisabled(){
+        bEnabled = false;
     }
 
     public void dispose() {

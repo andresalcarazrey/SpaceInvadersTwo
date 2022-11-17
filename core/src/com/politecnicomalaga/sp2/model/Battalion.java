@@ -31,4 +31,17 @@ public class Battalion {
             sq.dispose();
         }
     }
+
+    //Collisions between a bullet and my soldiers
+    public boolean calculateCollisions(HeroBullet heroBullet) {
+        boolean bResult = false;
+        int indexSquad = 0;
+
+        while (!bResult && indexSquad < squadrons.size) {
+            bResult = squadrons.get(indexSquad).calculateCollisions(heroBullet);
+            indexSquad++;
+        }
+
+        return bResult;
+    }
 }
