@@ -17,9 +17,15 @@ public class EnemyShip extends Actor {
 
     private Animation<TextureRegion> skin;
     private TextureAtlas atlas;
+    private int maxXMovement;
+    private float originalX;
+    private float velX;
 
-    public EnemyShip() {
+    public EnemyShip(int offsetX) {
         super();
+        originalX = -1;
+        velX = SettingsManager.ENEMIES_X_VEL;
+        maxXMovement = offsetX/2;
         setBounds(0,0,SettingsManager.ENEMIES_SIZE,SettingsManager.ENEMIES_SIZE);
         atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
         skin = new Animation<TextureRegion>(SettingsManager.ENEMY_ANIMATION_VEL, atlas.findRegions(AssetsManager.ENEMY_SPRITES_REGION), Animation.PlayMode.LOOP);
@@ -31,6 +37,22 @@ public class EnemyShip extends Actor {
         batch.draw(currentFrame, this.getX(), this.getY(), SettingsManager.ENEMIES_SIZE, SettingsManager.ENEMIES_SIZE);
     }
 
+    @Override
+    public void act(float delta) {
+        setX(getX()+velX*delta);
+        if (Math.abs(getX()-originalX)>maxXMovement) {
+            velX = -velX;
+        }
+    }
+
+    @Override
+    public void setX(float X) {
+        super.setX(X);
+        if (originalX == -1) {
+            originalX = X;
+        }
+
+    }
 
     public void dispose() {
         if (atlas != null) atlas.dispose();

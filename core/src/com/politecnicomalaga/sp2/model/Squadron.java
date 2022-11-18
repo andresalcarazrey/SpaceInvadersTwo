@@ -23,7 +23,7 @@ public class Squadron {
 
         //We have to create all the squadrons
         for (short i=0;i<SettingsManager.ENEMIES_PER_SQUADRON;i++) {
-            EnemyShip newEnemy = new EnemyShip();
+            EnemyShip newEnemy = new EnemyShip(offsetX);
             newEnemy.setX(posX+i*offsetX);
             newEnemy.setY(posY);
             baseStage.addActor(newEnemy);

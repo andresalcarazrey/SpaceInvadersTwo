@@ -24,5 +24,7 @@ public class SettingsManager {
 
     public static final float FIRE_PLAYER_TIME = 0.8f;
 
+    public static final float ENEMIES_X_VEL = 25f;
+
 
 }
