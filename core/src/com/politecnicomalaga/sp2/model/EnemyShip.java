@@ -20,6 +20,7 @@ public class EnemyShip extends Actor {
 
     public EnemyShip() {
         super();
+        setBounds(0,0,SettingsManager.ENEMIES_SIZE,SettingsManager.ENEMIES_SIZE);
         atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
         skin = new Animation<TextureRegion>(SettingsManager.ENEMY_ANIMATION_VEL, atlas.findRegions(AssetsManager.ENEMY_SPRITES_REGION), Animation.PlayMode.LOOP);
     }

@@ -72,7 +72,7 @@ public class PlayerSpaceShip extends Actor {
             b.act(delta);
         }
 
-        for (int i = 0; i<myActiveBullets.size;i++) {
+        /*for (int i = 0; i<myActiveBullets.size;i++) {
             HeroBullet b = (myActiveBullets.get(i));
             if (!b.isEnabled()) {
                 b.setEnabled();
@@ -80,7 +80,7 @@ public class PlayerSpaceShip extends Actor {
                 myUsedBullets.add(b);
                 i--;
             }
-        }
+        }*/
     }
 
 
@@ -103,6 +103,7 @@ public class PlayerSpaceShip extends Actor {
             //Get the first one...
             HeroBullet usedBullet = myUsedBullets.get(0);
 
+            //usedBullet.setEnabled();
             //change the array index to know where is it and we reactivate it
             myActiveBullets.add(usedBullet);
 
@@ -117,10 +118,14 @@ public class PlayerSpaceShip extends Actor {
 
     private void prepareForReuse(HeroBullet usedBullet) {
         myActiveBullets.removeIndex(0);
+        //usedBullet.setEnabled();
         myUsedBullets.add(usedBullet);
     }
 
     public void removeBullet(HeroBullet bulletToRemove) {
-        bulletToRemove.setDisabled();
+        //bulletToRemove.setDisabled();
+        //We have to search for this bullet in active list and move to used list
+        myActiveBullets.removeValue(bulletToRemove,true);
+        myUsedBullets.add(bulletToRemove);
     }
 }

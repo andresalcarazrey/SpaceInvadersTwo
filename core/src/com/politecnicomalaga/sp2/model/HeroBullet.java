@@ -17,12 +17,12 @@ public class HeroBullet extends Actor {
     private TextureAtlas atlas;
     private PlayerSpaceShip myOwner;
     private float velY;
-    boolean bEnabled;
+    //boolean bEnabled;
 
     public HeroBullet(PlayerSpaceShip myOwner) {
         super();
         this.myOwner = myOwner;
-        bEnabled = true;
+        //bEnabled = true;
 
         //Dims and position
         setBounds(0,0,SettingsManager.HEROBULLET_SIZE,SettingsManager.HEROBULLET_SIZE);
@@ -54,7 +54,6 @@ public class HeroBullet extends Actor {
         if (myScreen.getBattalion().calculateCollisions(this)) {
             //we touch an enemy. The enemy is dead. We have to remove this bullet
             myOwner.removeBullet(this);
-            this.dispose();
 
         }
 
@@ -62,7 +61,7 @@ public class HeroBullet extends Actor {
 
     }
 
-    public boolean isEnabled() {
+    /*public boolean isEnabled() {
         return bEnabled;
     }
 
@@ -73,7 +72,7 @@ public class HeroBullet extends Actor {
     public void setDisabled(){
         bEnabled = false;
     }
-
+*/
     public void dispose() {
         if (atlas != null) atlas.dispose();
     }

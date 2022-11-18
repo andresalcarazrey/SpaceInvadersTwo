@@ -21,6 +21,7 @@ public class Battalion {
         //We have to create all the squadrons
         for (short i = 0; i< SettingsManager.SQUADRON_PER_BATTALION; i++) {
             Squadron newSquad = new Squadron(baseStage, (short)(posY - i*offsetY));
+            squadrons.add(newSquad);
         }
     }
 

@@ -7,6 +7,7 @@ import com.politecnicomalaga.sp2.managers.SettingsManager;
 public class Squadron {
 
     private Array<EnemyShip> troops;
+    private Stage baseStage;
 
     public Squadron(Stage baseStage, short posY) {
         short offsetX, posX;
@@ -14,6 +15,7 @@ public class Squadron {
         //Initiate the arraylist
         troops = new Array<EnemyShip>();
 
+        this.baseStage = baseStage;
         posX = SettingsManager.SCREEN_WIDTH / (SettingsManager.ENEMIES_PER_SQUADRON + 1);
         offsetX = posX;
         posX -= SettingsManager.MIDENEMIES_SIZE;
@@ -25,6 +27,7 @@ public class Squadron {
             newEnemy.setX(posX+i*offsetX);
             newEnemy.setY(posY);
             baseStage.addActor(newEnemy);
+            troops.add(newEnemy);
         }
     }
 
@@ -46,6 +49,13 @@ public class Squadron {
             indexTroops++;
         }
 
+        if (bResult) {
+            //We have a collision. We need to remove the enemy from the list.
+            EnemyShip deadEnemy = troops.removeIndex(indexTroops-1);
+            deadEnemy.remove();
+            deadEnemy.dispose();
+
+        }
         return bResult;
     }
 }
