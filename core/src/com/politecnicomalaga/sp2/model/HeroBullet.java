@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.politecnicomalaga.sp2.managers.AssetsManager;
 import com.politecnicomalaga.sp2.managers.GameManager;
@@ -17,17 +18,19 @@ public class HeroBullet extends Actor {
     private TextureAtlas atlas;
     private PlayerSpaceShip myOwner;
     private float velY;
+    private Circle body;
     //boolean bEnabled;
 
     public HeroBullet(PlayerSpaceShip myOwner) {
         super();
         this.myOwner = myOwner;
-        //bEnabled = true;
+        body = null;
 
         //Dims and position
         setBounds(0,0,SettingsManager.HEROBULLET_SIZE,SettingsManager.HEROBULLET_SIZE);
         setX(myOwner.getX()+SettingsManager.MIDPLAYER_SIZE-SettingsManager.MIDHEROBULLET_SIZE);
         setY(myOwner.getY());
+        this.calculateBodyCircle();
         velY = SettingsManager.HEROBULLET_VELY;
 
         atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
@@ -44,6 +47,7 @@ public class HeroBullet extends Actor {
     public void act(float delta) {
         super.act(delta);
         setY(getY()+velY);
+        this.calculateBodyCircle();
 
         //Now we have to search for collisions....
         //For efficiency, we use squadron Y to avoid extra calculations
@@ -77,4 +81,12 @@ public class HeroBullet extends Actor {
         if (atlas != null) atlas.dispose();
     }
 
+    public void calculateBodyCircle() {
+        body = new Circle(getX()+SettingsManager.HEROBULLET_MIDSIZE,getY()+SettingsManager.HEROBULLET_MIDSIZE,SettingsManager.HEROBULLET_MIDSIZE);
+    }
+
+
+    public Circle getBody() {
+        return body;
+    }
 }

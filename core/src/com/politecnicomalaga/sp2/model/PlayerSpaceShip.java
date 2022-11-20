@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
@@ -21,6 +22,7 @@ public class PlayerSpaceShip extends Actor {
 
     private Array<HeroBullet> myUsedBullets;
     private float timeToFire;
+    private Circle body;
 
     public PlayerSpaceShip() {
         super();
@@ -113,6 +115,7 @@ public class PlayerSpaceShip extends Actor {
             //Change the position
             usedBullet.setX(this.getX()+SettingsManager.MIDPLAYER_SIZE-SettingsManager.MIDHEROBULLET_SIZE);
             usedBullet.setY(this.getY());
+            usedBullet.calculateBodyCircle();
         }
     }
 
@@ -127,5 +130,9 @@ public class PlayerSpaceShip extends Actor {
         //We have to search for this bullet in active list and move to used list
         myActiveBullets.removeValue(bulletToRemove,true);
         myUsedBullets.add(bulletToRemove);
+    }
+
+    public void calculateBodyCircle() {
+        body = new Circle(getX()+SettingsManager.HEROBULLET_MIDSIZE,getY()+SettingsManager.HEROBULLET_MIDSIZE,SettingsManager.HEROBULLET_MIDSIZE);
     }
 }

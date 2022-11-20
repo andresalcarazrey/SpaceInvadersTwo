@@ -61,6 +61,7 @@ public class GameScreen implements Screen {
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
                 //We set X to the position of the "point" touched, so, the spaceship follows us
                 heroShip.setX(event.getStageX());
+                heroShip.calculateBodyCircle();
             }
         });
         stage.addActor(heroShip);

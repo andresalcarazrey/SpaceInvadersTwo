@@ -1,10 +1,14 @@
 package com.politecnicomalaga.sp2.model;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.politecnicomalaga.sp2.managers.AssetsManager;
@@ -21,6 +25,8 @@ public class EnemyShip extends Actor {
     private float originalX;
     private float velX;
 
+    private Circle body;
+
     public EnemyShip(int offsetX) {
         super();
         originalX = -1;
@@ -29,10 +35,11 @@ public class EnemyShip extends Actor {
         setBounds(0,0,SettingsManager.ENEMIES_SIZE,SettingsManager.ENEMIES_SIZE);
         atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
         skin = new Animation<TextureRegion>(SettingsManager.ENEMY_ANIMATION_VEL, atlas.findRegions(AssetsManager.ENEMY_SPRITES_REGION), Animation.PlayMode.LOOP);
+        body = null;
     }
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        super.draw(batch, parentAlpha);
+        //super.draw(batch, parentAlpha);
         TextureRegion currentFrame = skin.getKeyFrame(GameManager.getSingleton().getGameTime(), true);
         batch.draw(currentFrame, this.getX(), this.getY(), SettingsManager.ENEMIES_SIZE, SettingsManager.ENEMIES_SIZE);
     }
@@ -43,6 +50,7 @@ public class EnemyShip extends Actor {
         if (Math.abs(getX()-originalX)>maxXMovement) {
             velX = -velX;
         }
+        this.calculateBodyCircle();
     }
 
     @Override
@@ -60,10 +68,14 @@ public class EnemyShip extends Actor {
 
 
     public boolean calculateCollisions(HeroBullet hb) {
-        Rectangle enemyR, bulletR;
+        Circle hbBody = hb.getBody();
+        if (hbBody != null && body != null)
+            return body.overlaps(hbBody);
+        else
+            return false;
+    }
 
-        enemyR = new Rectangle(getX(),getY(),getWidth(),getHeight());
-        bulletR = new Rectangle(hb.getX(),hb.getY(),hb.getWidth(),hb.getHeight());
-        return enemyR.overlaps(bulletR);
+    public void calculateBodyCircle() {
+        body = new Circle(getX()+SettingsManager.MIDENEMIES_SIZE,getY()+SettingsManager.MIDENEMIES_SIZE,SettingsManager.MIDENEMIES_SIZE-SettingsManager.ENEMIES_BODY_AJUST);
     }
 }

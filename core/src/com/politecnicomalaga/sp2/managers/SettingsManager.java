@@ -14,6 +14,7 @@ public class SettingsManager {
     public static final short MIDPLAYER_SIZE = 32;
 
     public static final short HEROBULLET_SIZE = 16;
+    public static final short HEROBULLET_MIDSIZE = 8;
     public static final short MIDHEROBULLET_SIZE = 8;
 
 
@@ -25,6 +26,8 @@ public class SettingsManager {
     public static final float FIRE_PLAYER_TIME = 0.8f;
 
     public static final float ENEMIES_X_VEL = 25f;
+
+    public static final float ENEMIES_BODY_AJUST = 10f;
 
 
 }

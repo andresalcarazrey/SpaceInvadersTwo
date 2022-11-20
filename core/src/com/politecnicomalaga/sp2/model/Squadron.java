@@ -26,9 +26,11 @@ public class Squadron {
             EnemyShip newEnemy = new EnemyShip(offsetX);
             newEnemy.setX(posX+i*offsetX);
             newEnemy.setY(posY);
+            newEnemy.calculateBodyCircle();
             baseStage.addActor(newEnemy);
             troops.add(newEnemy);
         }
+
     }
 
     //Memory dispose
