@@ -8,7 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.politecnicomalaga.sp2.managers.AssetsManager;
+import com.politecnicomalaga.sp2.managers.LanguageManager;
 import com.politecnicomalaga.sp2.managers.ScreensManager;
 import com.politecnicomalaga.sp2.model.Battalion;
 import com.politecnicomalaga.sp2.model.PlayerSpaceShip;
@@ -33,34 +38,37 @@ public class GameOverScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
 
+        Label title = new Label(LanguageManager.getSingleton().getString(LanguageManager.GAMEOVER_LABEL), AssetsManager.getTextSkin(),"big-black");
+        title.setAlignment(Align.center);
+        title.setY(Gdx.graphics.getHeight()-title.getHeight()*2);
+        title.setWidth(Gdx.graphics.getWidth());
 
-        //We add the main player
-        /*heroShip = new PlayerSpaceShip();
+        //Añadimos la etiqueta a la pantalla.
+        stage.addActor(title);
 
-        heroShip.addListener(new InputListener() {
 
-            public void clicked(InputEvent event, float x, float y, int pointer, int button) {
+        //Ahora le toca a los botones. Son botones con texto
+        TextButton continueButton = new TextButton(LanguageManager.getSingleton().getString(LanguageManager.CONTINUE_BUTTON), AssetsManager.getTextSkin());
+        continueButton.setWidth(Gdx.graphics.getWidth()/2);
+        continueButton.setPosition(Gdx.graphics.getWidth()/2-continueButton.getWidth()/2,Gdx.graphics.getHeight()-continueButton.getHeight()*4);
 
+        //Le añadimos al botón una acción con un listener. MVC
+        continueButton.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                //Cuando el botón se suelte...
+                //Le decimos al juego que coja y asigne una screen nueva, en concreto
+                //una SplashScreen
+                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SPLASH_SCREEN));
             }
-
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                //Cuando el botón se pulsa no hacermos nada. Pero hay que implementarlo
                 return true;
             }
-
-
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-
-            }
-
-            @Override
-            public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                //We set X to the position of the "point" touched, so, the spaceship follows us
-                heroShip.setX(event.getStageX());
-            }
         });
-        stage.addActor(heroShip);
-        heroShip.setTouchable(Touchable.enabled);*/
+        //El botón también es un actor.
+        stage.addActor(continueButton);
 
     }
 

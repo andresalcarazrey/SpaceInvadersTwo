@@ -12,6 +12,9 @@ public class AssetsManager {
     public static final String ENEMYBULLET_SPRITES_REGION ="enemybullets";
     public static final String ATLAS_FILE ="sp2.atlas";
     public static final String PLAYER_SPRITES_REGION ="player";
+    public static final String EXPLOSION_SPRITES_REGION ="explosion";
+
+
     private static Skin textSkin;
 
     public static Skin getTextSkin() {

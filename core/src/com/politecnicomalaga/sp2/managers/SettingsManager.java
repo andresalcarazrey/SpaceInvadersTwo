@@ -31,10 +31,20 @@ public class SettingsManager {
     public static final float ENEMIES_X_VEL = 25f;
 
     public static final float ENEMIES_BODY_AJUST = 10f;
+
+    public static final float PLAYER_BODY_AJUST = 4f;
+
     public static final float BULLETS_ANIMATION_VEL = 0.1f;
 
     public static final float FIRE_PROBABILITY = 0.999f;
 
 
+    public static final float TIME_TO_SELFDESTRUCTION = 1.3f;
+
+    public static final int SCORE_X = 20;
+    public static final int SCORE_Y = 20;
+    public static final int SCORE_WIDTH = 64;
+
+    public static final int ENEMIES_SCORE = 1;
 
 }

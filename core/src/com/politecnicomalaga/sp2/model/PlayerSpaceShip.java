@@ -131,7 +131,7 @@ public class PlayerSpaceShip extends Actor {
     }
 
     public void calculateBodyCircle() {
-        body = new Circle(getX()+SettingsManager.MIDPLAYER_SIZE,getY()+SettingsManager.MIDPLAYER_SIZE,SettingsManager.MIDPLAYER_SIZE);
+        body = new Circle(getX()+SettingsManager.MIDPLAYER_SIZE,getY()+SettingsManager.MIDPLAYER_SIZE,SettingsManager.MIDPLAYER_SIZE-SettingsManager.PLAYER_BODY_AJUST);
     }
 
     public Circle getBody() {

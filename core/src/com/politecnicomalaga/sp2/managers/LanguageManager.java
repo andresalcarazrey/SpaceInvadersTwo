@@ -8,8 +8,8 @@ public class LanguageManager {
         ENGLISH
     }
 
-    private static final String[] spanishTexts = {"Empezar", "Configuracion", "Creditos","Español","Inglés","Space Invaders 2","Idioma"};
-    private static final String[] englishTexts = {"Start", "Settings", "Credits","Spanish", "English", "Space Invaders 2", "Language"};
+    private static final String[] spanishTexts = {"Empezar", "Configuracion", "Creditos","Castellano","Ingles","Space Invaders 2","Idioma","Game Over", "Continuar"};
+    private static final String[] englishTexts = {"Start", "Settings", "Credits","Spanish", "English", "Space Invaders 2", "Language", "Game Over", "Continue"};
 
     //UI Components used in the game
     public static final int START_BUTTON = 0;
@@ -19,6 +19,8 @@ public class LanguageManager {
     public static final int ENGLISH_BUTTON = 4;
     public static final int SPLASH_LABEL = 5;
     public static final int SETTINGS_LABEL = 6;
+    public static final int GAMEOVER_LABEL = 7;
+    public static final int CONTINUE_BUTTON = 8;
 
 
     //Active Language

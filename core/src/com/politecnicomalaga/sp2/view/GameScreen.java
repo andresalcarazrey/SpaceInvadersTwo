@@ -4,11 +4,14 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.politecnicomalaga.sp2.managers.SettingsManager;
 import com.politecnicomalaga.sp2.model.Battalion;
 import com.politecnicomalaga.sp2.model.PlayerSpaceShip;
 
@@ -23,12 +26,16 @@ public class GameScreen implements Screen {
     private Game game;
     private Battalion empire;
     private PlayerSpaceShip heroShip;
+    private NumbersPanel score;
+    private SpriteBatch batch;
 
     public GameScreen(Game aGame) {
         game = aGame;
-
+        score = new NumbersPanel(SettingsManager.SCORE_X,SettingsManager.SCORE_Y, SettingsManager.SCORE_WIDTH);
+        score.setData(0);
 
         stage = new Stage(new ScreenViewport());
+        batch = (SpriteBatch)stage.getBatch();
 
         //Esta orden se puede poner también en el show()
         Gdx.input.setInputProcessor(stage);
@@ -36,7 +43,7 @@ public class GameScreen implements Screen {
 
         //We add the battalion, "the empire"
 
-        empire = new Battalion(stage);
+        empire = new Battalion(game, stage);
 
         //We add the main player
         heroShip = new PlayerSpaceShip();
@@ -82,6 +89,11 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act();
         stage.draw();
+
+
+        batch.begin();
+        score.render(batch);
+        batch.end();
     }
 
 
@@ -113,10 +125,15 @@ public class GameScreen implements Screen {
         stage.dispose();
         empire.dispose();
         heroShip.dispose();
+        score.dispose();
     }
 
     public Battalion getBattalion() {
         return empire;
+    }
+
+    public void addScore(int scoreToAdd) {
+        score.increment(scoreToAdd);
     }
 
 }

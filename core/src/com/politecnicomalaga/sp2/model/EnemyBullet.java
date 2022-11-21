@@ -65,10 +65,17 @@ public class EnemyBullet extends Actor {
     }
 
     public boolean calculateCollision(PlayerSpaceShip player) {
+        boolean result;
+
         Circle playerBody = player.getBody();
-        if (playerBody != null && body != null)
-            return body.overlaps(playerBody);
-        else
+        if (playerBody != null && body != null) {
+            result = body.overlaps(playerBody);
+            if (result) {
+                //We change to explosion
+                skin = new Animation<TextureRegion>(SettingsManager.BULLETS_ANIMATION_VEL, atlas.findRegions(AssetsManager.EXPLOSION_SPRITES_REGION), Animation.PlayMode.LOOP);
+            }
+            return result;
+        } else
             return false;
     }
 

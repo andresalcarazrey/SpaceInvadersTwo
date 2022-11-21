@@ -7,6 +7,7 @@ import com.politecnicomalaga.sp2.managers.SettingsManager;
 public class Squadron {
 
     private Array<EnemyShip> troops;
+
     private Stage baseStage;
 
     public Squadron(Stage baseStage, short posY) {
@@ -38,6 +39,8 @@ public class Squadron {
         for (EnemyShip ship: troops) {
             ship.dispose();
         }
+
+
     }
 
 
@@ -54,10 +57,10 @@ public class Squadron {
         if (bResult) {
             //We have a collision. We need to remove the enemy from the list.
             EnemyShip deadEnemy = troops.removeIndex(indexTroops-1);
-            deadEnemy.remove();
-            deadEnemy.dispose();
 
         }
         return bResult;
     }
+
+
 }

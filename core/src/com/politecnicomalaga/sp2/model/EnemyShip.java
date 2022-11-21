@@ -26,12 +26,16 @@ public class EnemyShip extends Actor {
     private int maxXMovement;
     private float originalX;
     private float velX;
+    private float timeToSelfDestruction;
+    private boolean bSelfDestruction;
 
 
     private Circle body;
 
     public EnemyShip(int offsetX) {
         super();
+        bSelfDestruction = false;
+        timeToSelfDestruction = SettingsManager.TIME_TO_SELFDESTRUCTION;
         originalX = -1;
         velX = SettingsManager.ENEMIES_X_VEL;
         maxXMovement = offsetX/2;
@@ -49,15 +53,23 @@ public class EnemyShip extends Actor {
 
     @Override
     public void act(float delta) {
-        setX(getX()+velX*delta);
-        if (Math.abs(getX()-originalX)>maxXMovement) {
-            velX = -velX;
-        }
-        this.calculateBodyCircle();
+        if (bSelfDestruction) {
+            timeToSelfDestruction -= delta;
+            if (timeToSelfDestruction < 0f) {
+                this.remove();
+                this.dispose();
+            }
+        } else {
+            setX(getX() + velX * delta);
+            if (Math.abs(getX() - originalX) > maxXMovement) {
+                velX = -velX;
+            }
+            this.calculateBodyCircle();
 
-        //Time to fire? Probability matters...
-        if (Math.random() >= SettingsManager.FIRE_PROBABILITY) {
-            this.fireBullet();
+            //Time to fire? Probability matters...
+            if (Math.random() >= SettingsManager.FIRE_PROBABILITY) {
+                this.fireBullet();
+            }
         }
     }
 
@@ -76,10 +88,17 @@ public class EnemyShip extends Actor {
 
 
     public boolean calculateCollisions(HeroBullet hb) {
+        boolean result;
         Circle hbBody = hb.getBody();
-        if (hbBody != null && body != null)
-            return body.overlaps(hbBody);
-        else
+        if (hbBody != null && body != null) {
+            result = body.overlaps(hbBody);
+            if (result) {
+                //We change to explosion
+                skin = new Animation<TextureRegion>(SettingsManager.BULLETS_ANIMATION_VEL, atlas.findRegions(AssetsManager.EXPLOSION_SPRITES_REGION), Animation.PlayMode.LOOP);
+                activateSelfDestruction();
+            }
+            return result;
+        } else
             return false;
     }
 
@@ -90,5 +109,9 @@ public class EnemyShip extends Actor {
     public void fireBullet() {
         GameScreen myScreen = (GameScreen) ScreensManager.getSingleton().getActiveScreen();
         myScreen.getBattalion().fireBullet(this);
+    }
+
+    private void activateSelfDestruction() {
+        bSelfDestruction = true;
     }
 }

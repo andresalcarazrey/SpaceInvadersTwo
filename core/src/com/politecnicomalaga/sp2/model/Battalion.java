@@ -1,10 +1,14 @@
 package com.politecnicomalaga.sp2.model;
 
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+import com.politecnicomalaga.sp2.managers.ScreensManager;
 import com.politecnicomalaga.sp2.managers.SettingsManager;
+import com.politecnicomalaga.sp2.view.GameScreen;
 
 import java.util.ArrayList;
 
@@ -12,9 +16,12 @@ public class Battalion {
     private Array<Squadron> squadrons;
     private Array<EnemyBullet> myActiveBullets;
     private Array<EnemyBullet> myUsedBullets;
+    private Game game;
 
-    public Battalion(Stage baseStage) {
+    public Battalion(Game game, Stage baseStage) {
         short posY, offsetY;
+
+        this.game = game;
 
         //Initiate the arraylist
         squadrons = new Array<Squadron>();
@@ -58,6 +65,11 @@ public class Battalion {
         while (!bResult && indexSquad < squadrons.size) {
             bResult = squadrons.get(indexSquad).calculateCollisions(heroBullet);
             indexSquad++;
+        }
+
+        if (bResult) { //update score
+            GameScreen myScreen = (GameScreen)(ScreensManager.getSingleton().getActiveScreen());
+            myScreen.addScore(SettingsManager.ENEMIES_SCORE);
         }
 
         return bResult;
@@ -111,7 +123,8 @@ public class Battalion {
         if (bResult) {
             //We are dead...
             //here: change to game over...
-            todo
+            game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAMEOVER_SCREEN));
+
         }
     }
 
