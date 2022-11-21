@@ -13,7 +13,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.politecnicomalaga.sp2.managers.AssetsManager;
 import com.politecnicomalaga.sp2.managers.GameManager;
+import com.politecnicomalaga.sp2.managers.ScreensManager;
 import com.politecnicomalaga.sp2.managers.SettingsManager;
+import com.politecnicomalaga.sp2.view.GameScreen;
 
 import java.util.Set;
 
@@ -24,6 +26,7 @@ public class EnemyShip extends Actor {
     private int maxXMovement;
     private float originalX;
     private float velX;
+
 
     private Circle body;
 
@@ -51,6 +54,11 @@ public class EnemyShip extends Actor {
             velX = -velX;
         }
         this.calculateBodyCircle();
+
+        //Time to fire? Probability matters...
+        if (Math.random() >= SettingsManager.FIRE_PROBABILITY) {
+            this.fireBullet();
+        }
     }
 
     @Override
@@ -77,5 +85,10 @@ public class EnemyShip extends Actor {
 
     public void calculateBodyCircle() {
         body = new Circle(getX()+SettingsManager.MIDENEMIES_SIZE,getY()+SettingsManager.MIDENEMIES_SIZE,SettingsManager.MIDENEMIES_SIZE-SettingsManager.ENEMIES_BODY_AJUST);
+    }
+
+    public void fireBullet() {
+        GameScreen myScreen = (GameScreen) ScreensManager.getSingleton().getActiveScreen();
+        myScreen.getBattalion().fireBullet(this);
     }
 }

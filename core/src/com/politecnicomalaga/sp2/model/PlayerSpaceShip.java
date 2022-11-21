@@ -11,7 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.politecnicomalaga.sp2.managers.AssetsManager;
 import com.politecnicomalaga.sp2.managers.GameManager;
+import com.politecnicomalaga.sp2.managers.ScreensManager;
 import com.politecnicomalaga.sp2.managers.SettingsManager;
+import com.politecnicomalaga.sp2.view.GameScreen;
 
 public class PlayerSpaceShip extends Actor {
 
@@ -51,7 +53,9 @@ public class PlayerSpaceShip extends Actor {
         TextureRegion currentFrame = skin.getKeyFrame(GameManager.getSingleton().getGameTime(), true);
         batch.draw(currentFrame, this.getX(), this.getY(), getWidth(),getHeight());
 
-
+        //Tells the battalion to draw enemies bullets
+        GameScreen activeGame = (GameScreen)ScreensManager.getSingleton().getActiveScreen();
+        activeGame.getBattalion().draw(batch);
     }
 
     @Override
@@ -74,15 +78,10 @@ public class PlayerSpaceShip extends Actor {
             b.act(delta);
         }
 
-        /*for (int i = 0; i<myActiveBullets.size;i++) {
-            HeroBullet b = (myActiveBullets.get(i));
-            if (!b.isEnabled()) {
-                b.setEnabled();
-                myActiveBullets.removeIndex(i);
-                myUsedBullets.add(b);
-                i--;
-            }
-        }*/
+
+        //Tells the battalion to act. For enemies bullets
+        GameScreen activeGame = (GameScreen)ScreensManager.getSingleton().getActiveScreen();
+        activeGame.getBattalion().act(this, delta);
     }
 
 
@@ -113,7 +112,7 @@ public class PlayerSpaceShip extends Actor {
             myUsedBullets.removeIndex(0);
 
             //Change the position
-            usedBullet.setX(this.getX()+SettingsManager.MIDPLAYER_SIZE-SettingsManager.MIDHEROBULLET_SIZE);
+            usedBullet.setX(this.getX()+SettingsManager.MIDPLAYER_SIZE-SettingsManager.HEROBULLET_MIDSIZE);
             usedBullet.setY(this.getY());
             usedBullet.calculateBodyCircle();
         }
@@ -121,7 +120,6 @@ public class PlayerSpaceShip extends Actor {
 
     private void prepareForReuse(HeroBullet usedBullet) {
         myActiveBullets.removeIndex(0);
-        //usedBullet.setEnabled();
         myUsedBullets.add(usedBullet);
     }
 
@@ -133,6 +131,10 @@ public class PlayerSpaceShip extends Actor {
     }
 
     public void calculateBodyCircle() {
-        body = new Circle(getX()+SettingsManager.HEROBULLET_MIDSIZE,getY()+SettingsManager.HEROBULLET_MIDSIZE,SettingsManager.HEROBULLET_MIDSIZE);
+        body = new Circle(getX()+SettingsManager.MIDPLAYER_SIZE,getY()+SettingsManager.MIDPLAYER_SIZE,SettingsManager.MIDPLAYER_SIZE);
+    }
+
+    public Circle getBody() {
+        return body;
     }
 }
