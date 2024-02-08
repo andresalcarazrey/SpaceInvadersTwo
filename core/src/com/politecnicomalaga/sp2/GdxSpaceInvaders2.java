@@ -24,7 +24,7 @@ public class GdxSpaceInvaders2 extends Game {
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
-		this.setScreen(ScreensManager.getSingleton().getScreen(this, ScreensManager.SCREENS.SPLASH_SCREEN));
+		this.setScreen(ScreensManager.getSingleton().getScreen(this, ScreensManager.SCREENS.SPLASH_SCREEN,""));
         GdxSpaceInvaders2.fGameTime = 0f;
 		this.getScreen().show();
 	}

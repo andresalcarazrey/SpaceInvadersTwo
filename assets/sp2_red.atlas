@@ -1,0 +1,223 @@
+
+sp2_red.png
+size: 2048, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+enemy
+  rotate: false
+  xy: 2, 24
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 4
+enemy
+  rotate: false
+  xy: 224, 24
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 1
+enemy
+  rotate: false
+  xy: 446, 24
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 6
+enemy
+  rotate: false
+  xy: 668, 24
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 3
+enemy
+  rotate: false
+  xy: 890, 24
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 5
+enemy
+  rotate: false
+  xy: 1112, 24
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: 2
+enemybullets
+  rotate: false
+  xy: 1334, 48
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: 3
+herobullets
+  rotate: false
+  xy: 1334, 48
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: 3
+enemyshoot
+  rotate: false
+  xy: 1504, 190
+  size: 6, 12
+  orig: 6, 12
+  offset: 0, 0
+  index: -1
+explosion
+  rotate: false
+  xy: 1458, 204
+  size: 44, 40
+  orig: 44, 40
+  offset: 0, 0
+  index: 3
+explosion
+  rotate: false
+  xy: 1458, 204
+  size: 44, 40
+  orig: 44, 40
+  offset: 0, 0
+  index: 5
+explosion
+  rotate: false
+  xy: 1396, 82
+  size: 44, 40
+  orig: 44, 40
+  offset: 0, 0
+  index: 2
+explosion
+  rotate: false
+  xy: 1396, 82
+  size: 44, 40
+  orig: 44, 40
+  offset: 0, 0
+  index: 6
+explosion
+  rotate: false
+  xy: 1458, 162
+  size: 44, 40
+  orig: 44, 40
+  offset: 0, 0
+  index: 7
+explosion
+  rotate: false
+  xy: 1458, 162
+  size: 44, 40
+  orig: 44, 40
+  offset: 0, 0
+  index: 1
+explosion
+  rotate: false
+  xy: 1504, 204
+  size: 44, 40
+  orig: 44, 40
+  offset: 0, 0
+  index: 4
+herobullets
+  rotate: false
+  xy: 1396, 67
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: 2
+enemybullets
+  rotate: false
+  xy: 1396, 67
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: 2
+herobullets
+  rotate: false
+  xy: 1442, 109
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: 4
+enemybullets
+  rotate: false
+  xy: 1442, 109
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: 4
+herobullets
+  rotate: false
+  xy: 1458, 147
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: 1
+enemybullets
+  rotate: false
+  xy: 1458, 147
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: 1
+player
+  rotate: false
+  xy: 1334, 185
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 5
+player
+  rotate: false
+  xy: 1334, 124
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 2
+player
+  rotate: false
+  xy: 1334, 124
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 8
+player
+  rotate: false
+  xy: 1396, 185
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 7
+player
+  rotate: false
+  xy: 1396, 185
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 3
+player
+  rotate: false
+  xy: 1334, 63
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 4
+player
+  rotate: false
+  xy: 1334, 63
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 6
+player
+  rotate: false
+  xy: 1396, 124
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: 1
+playershoot
+  rotate: false
+  xy: 2, 2
+  size: 8, 20
+  orig: 8, 20
+  offset: 0, 0
+  index: -1

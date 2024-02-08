@@ -6,8 +6,10 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+import com.politecnicomalaga.sp2.managers.LanguageManager;
 import com.politecnicomalaga.sp2.managers.ScreensManager;
 import com.politecnicomalaga.sp2.managers.SettingsManager;
+import com.politecnicomalaga.sp2.view.GameOverScreen;
 import com.politecnicomalaga.sp2.view.GameScreen;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class Battalion {
         //Initiate the arraylist
         squadrons = new Array<Squadron>();
 
-        offsetY = SettingsManager.SCREEN_HEIGHT / (2*SettingsManager.SQUADRON_PER_BATTALION);
+        offsetY = SettingsManager.SCREEN_HEIGHT / (3*SettingsManager.SQUADRON_PER_BATTALION);
         posY = (short)(SettingsManager.SCREEN_HEIGHT - offsetY);
 
 
@@ -127,13 +129,13 @@ public class Battalion {
         if (bResult) {
             //We are dead...
             //here: change to game over...
-            game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAMEOVER_SCREEN));
+            game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAMEOVER_SCREEN,LanguageManager.getSingleton().getString(LanguageManager.GAMEOVER_LABEL)));
 
         }
 
-        //Now time to show "Congrats Screen if we win
+        //Now time to show "Congrats Screen" if we win. We use Game Over with other messaga
         if (this.aliveSpaceShips() == 0) {
-            game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAMEOVER_SCREEN));
+            game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAMEOVER_SCREEN,LanguageManager.getSingleton().getString(LanguageManager.YOUWIN_LABEL)));
         }
     }
 

@@ -11,6 +11,9 @@ public class AssetsManager {
     public static final String HEROBULLET_SPRITES_REGION ="herobullets";
     public static final String ENEMYBULLET_SPRITES_REGION ="enemybullets";
     public static final String ATLAS_FILE ="sp2.atlas";
+    public static final String ATLAS_FILEBLUE ="sp2_blue.atlas";
+    public static final String ATLAS_FILERED ="sp2_red.atlas";
+    public static final String ATLAS_FILEGREEN ="sp2_green.atlas";
     public static final String PLAYER_SPRITES_REGION ="player";
     public static final String EXPLOSION_SPRITES_REGION ="explosion";
 

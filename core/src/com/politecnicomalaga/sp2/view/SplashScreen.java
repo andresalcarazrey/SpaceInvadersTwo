@@ -54,7 +54,7 @@ public class SplashScreen implements Screen {
                 //Cuando el botón se suelte...
                 //Le decimos al juego que coja y asigne una screen nueva, en concreto
                 //una GameScreen
-                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAME_SCREEN));
+                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAME_SCREEN,""));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -77,7 +77,7 @@ public class SplashScreen implements Screen {
                 //Cuando el botón se suelte...
                 //Le decimos al juego que coja y asigne una screen nueva, en concreto
                 //una GameScreen
-                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SETTINGS_SCREEN));
+                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SETTINGS_SCREEN,""));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

@@ -56,7 +56,7 @@ public class SettingsScreen implements Screen {
                 //Le decimos al juego que coja y asigne una screen nueva, en concreto
                 //una GameScreen
                 LanguageManager.getSingleton().setActiveLanguage(LanguageManager.Lang.SPANISH);
-                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SPLASH_SCREEN));
+                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SPLASH_SCREEN,""));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -80,7 +80,7 @@ public class SettingsScreen implements Screen {
                 //Le decimos al juego que coja y asigne una screen nueva, en concreto
                 //una GameScreen
                 LanguageManager.getSingleton().setActiveLanguage(LanguageManager.Lang.ENGLISH);
-                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SPLASH_SCREEN));
+                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SPLASH_SCREEN,""));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

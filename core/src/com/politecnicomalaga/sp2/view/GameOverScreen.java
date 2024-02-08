@@ -28,7 +28,7 @@ public class GameOverScreen implements Screen {
     private Stage stage;
     private Game game;
 
-    public GameOverScreen(Game aGame) {
+    public GameOverScreen(Game aGame, String msg) {
         game = aGame;
 
 
@@ -38,7 +38,7 @@ public class GameOverScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
 
-        Label title = new Label(LanguageManager.getSingleton().getString(LanguageManager.GAMEOVER_LABEL), AssetsManager.getTextSkin(),"big-black");
+        Label title = new Label(msg, AssetsManager.getTextSkin(),"big-black");
         title.setAlignment(Align.center);
         title.setY(Gdx.graphics.getHeight()-title.getHeight()*2);
         title.setWidth(Gdx.graphics.getWidth());
@@ -59,7 +59,7 @@ public class GameOverScreen implements Screen {
                 //Cuando el botón se suelte...
                 //Le decimos al juego que coja y asigne una screen nueva, en concreto
                 //una SplashScreen
-                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SPLASH_SCREEN));
+                game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.SPLASH_SCREEN,""));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -112,6 +112,8 @@ public class GameOverScreen implements Screen {
     public void dispose() {
         stage.dispose();
     }
+
+
 
 
 }

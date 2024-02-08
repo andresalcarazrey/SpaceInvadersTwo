@@ -30,12 +30,12 @@ public class ScreensManager {
         return singleton;
     }
 
-    public Screen getScreen(Game aGame, SCREENS screenToGet) {
+    public Screen getScreen(Game aGame, SCREENS screenToGet, String msg) {
         Screen newScreen;
         switch (screenToGet) {
             case GAME_SCREEN: newScreen = new GameScreen(aGame);
                 break;
-            case GAMEOVER_SCREEN: newScreen = new GameOverScreen(aGame);
+            case GAMEOVER_SCREEN: newScreen = new GameOverScreen(aGame,msg);
                 break;
             case SPLASH_SCREEN: newScreen = new SplashScreen(aGame);
                 break;

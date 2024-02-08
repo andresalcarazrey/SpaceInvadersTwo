@@ -38,9 +38,17 @@ public class EnemyShip extends Actor {
         timeToSelfDestruction = SettingsManager.TIME_TO_SELFDESTRUCTION;
         originalX = -1;
         velX = SettingsManager.ENEMIES_X_VEL;
-        maxXMovement = offsetX/2;
+        maxXMovement = offsetX;
         setBounds(0,0,SettingsManager.ENEMIES_SIZE,SettingsManager.ENEMIES_SIZE);
-        atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
+        double d = Math.random();
+        if (d<0.25)
+            atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILEBLUE));
+         else if (d<0.5)
+            atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILERED));
+        else if (d<0.75)
+            atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILEGREEN));
+        else
+            atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
         skin = new Animation<TextureRegion>(SettingsManager.ENEMY_ANIMATION_VEL, atlas.findRegions(AssetsManager.ENEMY_SPRITES_REGION), Animation.PlayMode.LOOP);
         body = null;
     }

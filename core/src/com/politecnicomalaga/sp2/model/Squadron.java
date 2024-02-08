@@ -11,14 +11,17 @@ public class Squadron {
     private Stage baseStage;
 
     public Squadron(Stage baseStage, short posY) {
-        short offsetX, posX;
+        int offsetX, posX;
 
         //Initiate the arraylist
         troops = new Array<EnemyShip>();
 
         this.baseStage = baseStage;
-        posX = SettingsManager.SCREEN_WIDTH / (SettingsManager.ENEMIES_PER_SQUADRON + 1);
+        int widthAvailable = SettingsManager.SCREEN_WIDTH - SettingsManager.SCREEN_WIDTH/6;
+        int innitialOffset = SettingsManager.SCREEN_WIDTH/12;
+        posX = widthAvailable / (SettingsManager.ENEMIES_PER_SQUADRON + 1);
         offsetX = posX;
+        posX = offsetX+innitialOffset;
         posX -= SettingsManager.MIDENEMIES_SIZE;
 
 
