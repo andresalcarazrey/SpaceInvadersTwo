@@ -18,6 +18,8 @@ public class Battalion {
     private Array<EnemyBullet> myUsedBullets;
     private Game game;
 
+    private int totalShips;
+
     public Battalion(Game game, Stage baseStage) {
         short posY, offsetY;
 
@@ -36,6 +38,7 @@ public class Battalion {
             squadrons.add(newSquad);
         }
 
+        totalShips = SettingsManager.SQUADRON_PER_BATTALION*SettingsManager.ENEMIES_PER_SQUADRON;
 
         //Bullets
         myActiveBullets = new Array<EnemyBullet>();
@@ -70,6 +73,7 @@ public class Battalion {
         if (bResult) { //update score
             GameScreen myScreen = (GameScreen)(ScreensManager.getSingleton().getActiveScreen());
             myScreen.addScore(SettingsManager.ENEMIES_SCORE);
+            totalShips--;
         }
 
         return bResult;
@@ -126,6 +130,11 @@ public class Battalion {
             game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAMEOVER_SCREEN));
 
         }
+
+        //Now time to show "Congrats Screen if we win
+        if (this.aliveSpaceShips() == 0) {
+            game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAMEOVER_SCREEN));
+        }
     }
 
     public void draw(Batch batch) {
@@ -146,5 +155,9 @@ public class Battalion {
         //We have to search for this bullet in active list and move to used list
         myActiveBullets.removeValue(bulletToRemove,true);
         myUsedBullets.add(bulletToRemove);
+    }
+
+    public int aliveSpaceShips() {
+        return totalShips;
     }
 }
