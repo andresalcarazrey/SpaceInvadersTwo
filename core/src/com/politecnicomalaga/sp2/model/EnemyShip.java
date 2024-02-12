@@ -22,7 +22,7 @@ import java.util.Set;
 public class EnemyShip extends Actor {
 
     private Animation<TextureRegion> skin;
-    private TextureAtlas atlas;
+    private TextureAtlas atlasUsed, atlasGreen,atlasWhite,atlasRed,atlasBlue;
     private int maxXMovement;
     private float originalX;
     private float velX;
@@ -40,16 +40,20 @@ public class EnemyShip extends Actor {
         velX = SettingsManager.ENEMIES_X_VEL;
         maxXMovement = offsetX;
         setBounds(0,0,SettingsManager.ENEMIES_SIZE,SettingsManager.ENEMIES_SIZE);
+        atlasWhite = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILEBLUE));
+        atlasRed = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILERED));
+        atlasGreen = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILEGREEN));
+        atlasBlue = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
         double d = Math.random();
         if (d<0.25)
-            atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILEBLUE));
+            atlasUsed = atlasWhite;
          else if (d<0.5)
-            atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILERED));
+            atlasUsed = atlasGreen;
         else if (d<0.75)
-            atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILEGREEN));
+            atlasUsed = atlasBlue;
         else
-            atlas = new TextureAtlas(Gdx.files.internal(AssetsManager.ATLAS_FILE));
-        skin = new Animation<TextureRegion>(SettingsManager.ENEMY_ANIMATION_VEL, atlas.findRegions(AssetsManager.ENEMY_SPRITES_REGION), Animation.PlayMode.LOOP);
+            atlasUsed = atlasRed;
+        skin = new Animation<TextureRegion>(SettingsManager.ENEMY_ANIMATION_VEL, atlasUsed.findRegions(AssetsManager.ENEMY_SPRITES_REGION), Animation.PlayMode.LOOP);
         body = null;
     }
     @Override
@@ -91,7 +95,10 @@ public class EnemyShip extends Actor {
     }
 
     public void dispose() {
-        if (atlas != null) atlas.dispose();
+        if (atlasRed != null) atlasRed.dispose();
+        if (atlasWhite != null) atlasWhite.dispose();
+        if (atlasBlue != null) atlasBlue.dispose();
+        if (atlasGreen != null) atlasGreen.dispose();
     }
 
 
@@ -102,7 +109,7 @@ public class EnemyShip extends Actor {
             result = body.overlaps(hbBody);
             if (result) {
                 //We change to explosion
-                skin = new Animation<TextureRegion>(SettingsManager.BULLETS_ANIMATION_VEL, atlas.findRegions(AssetsManager.EXPLOSION_SPRITES_REGION), Animation.PlayMode.LOOP);
+                skin = new Animation<TextureRegion>(SettingsManager.BULLETS_ANIMATION_VEL, atlasUsed.findRegions(AssetsManager.EXPLOSION_SPRITES_REGION), Animation.PlayMode.LOOP);
                 activateSelfDestruction();
             }
             return result;

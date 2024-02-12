@@ -54,8 +54,8 @@ public class PlayerSpaceShip extends Actor {
         batch.draw(currentFrame, this.getX(), this.getY(), getWidth(),getHeight());
 
         //Tells the battalion to draw enemies bullets
-        GameScreen activeGame = (GameScreen)ScreensManager.getSingleton().getActiveScreen();
-        activeGame.getBattalion().draw(batch);
+        //GameScreen activeGame = (GameScreen)ScreensManager.getSingleton().getActiveScreen();
+        //activeGame.getBattalion().draw(batch);
     }
 
     @Override

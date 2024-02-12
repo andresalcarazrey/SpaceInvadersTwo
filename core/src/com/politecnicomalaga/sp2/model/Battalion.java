@@ -20,12 +20,15 @@ public class Battalion {
     private Array<EnemyBullet> myUsedBullets;
     private Game game;
 
+    private Stage baseStage;
+
     private int totalShips;
 
     public Battalion(Game game, Stage baseStage) {
         short posY, offsetY;
 
         this.game = game;
+        this.baseStage = baseStage;
 
         //Initiate the arraylist
         squadrons = new Array<Squadron>();
@@ -82,9 +85,11 @@ public class Battalion {
     }
 
     public void fireBullet(EnemyShip shooter) {
-        if (myUsedBullets.size == 0)
-            myActiveBullets.add(new EnemyBullet(shooter));
-        else {
+        if (myUsedBullets.size == 0) {
+            EnemyBullet eb = new EnemyBullet(shooter);
+            myActiveBullets.add(eb);
+            baseStage.addActor(eb);
+        } else {
             //Get the first one...
             EnemyBullet usedBullet = myUsedBullets.get(0);
 
@@ -131,22 +136,10 @@ public class Battalion {
             //here: change to game over...
             game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAMEOVER_SCREEN,LanguageManager.getSingleton().getString(LanguageManager.GAMEOVER_LABEL)));
 
-        }
-
-        //Now time to show "Congrats Screen" if we win. We use Game Over with other messaga
-        if (this.aliveSpaceShips() == 0) {
+        } else if (this.aliveSpaceShips() == 0) { //Now time to show "Congrats Screen" if we win. We use Game Over with other message
             game.setScreen(ScreensManager.getSingleton().getScreen(game, ScreensManager.SCREENS.GAMEOVER_SCREEN,LanguageManager.getSingleton().getString(LanguageManager.YOUWIN_LABEL)));
         }
     }
-
-    public void draw(Batch batch) {
-        for (EnemyBullet b:myActiveBullets) {
-            b.draw(batch,1f);
-        }
-    }
-
-
-
 
     private void prepareForReuse(EnemyBullet usedBullet) {
         myActiveBullets.removeIndex(0);

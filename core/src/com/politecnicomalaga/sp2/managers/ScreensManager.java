@@ -45,7 +45,7 @@ public class ScreensManager {
                 break;
             default: newScreen = new SplashScreen(aGame);
         }
-        if (activeScreen != null) activeScreen.dispose();
+        //if (activeScreen != null) activeScreen.dispose();
         activeScreen = newScreen;
         return newScreen;
     }
