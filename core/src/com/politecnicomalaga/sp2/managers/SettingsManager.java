@@ -47,4 +47,10 @@ public class SettingsManager {
 
     public static final int ENEMIES_SCORE = 1;
 
+    public static final float PARALLAX_DENSITY = 0.99f; //Probabilidad para crear un Asteroide cada frame
+    public static final float PARALLAX_VEL_B = -200f;
+    public static final float PARALLAX_VEL_M = -100f;
+    public static final float PARALLAX_VEL_S = -50f;
+
+
 }

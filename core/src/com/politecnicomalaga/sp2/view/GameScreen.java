@@ -4,14 +4,18 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.politecnicomalaga.sp2.managers.AssetsManager;
 import com.politecnicomalaga.sp2.managers.SettingsManager;
+import com.politecnicomalaga.sp2.model.BackgroundParallax;
 import com.politecnicomalaga.sp2.model.Battalion;
 import com.politecnicomalaga.sp2.model.PlayerSpaceShip;
 
@@ -40,6 +44,9 @@ public class GameScreen implements Screen {
         //Esta orden se puede poner también en el show()
         Gdx.input.setInputProcessor(stage);
 
+        Group bg = new Group();
+// the order is important in the following two lines
+        stage.addActor(bg);
 
         //We add the battalion, "the empire"
 
@@ -87,6 +94,7 @@ public class GameScreen implements Screen {
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         stage.act();
         stage.draw();
 

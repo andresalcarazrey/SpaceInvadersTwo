@@ -17,6 +17,10 @@ public class AssetsManager {
     public static final String PLAYER_SPRITES_REGION ="player";
     public static final String EXPLOSION_SPRITES_REGION ="explosion";
 
+    public static final String TEXTURE_ASTEROID_B = "images/asteroids/asteroids_b.png";
+    public static final String TEXTURE_ASTEROID_M = "images/asteroids/asteroids_m.png";
+    public static final String TEXTURE_ASTEROID_S = "images/asteroids/asteroids_s.png";
+
 
     private static Skin textSkin;
 
